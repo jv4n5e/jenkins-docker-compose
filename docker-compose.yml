@@ -1,7 +1,7 @@
 version: '3'
 
 services: #service is the name for a "Container in production".
-  mysqldb: #container service name
+  mysql: #container service name
     image: mysql:5.7
     ports:
       - "3306:3306"
@@ -16,13 +16,13 @@ services: #service is the name for a "Container in production".
 
   wordpress:
     depends_on:
-      - mysqldb
+      - mysql
     image: wordpress:latest
     ports:
       - "80:80"
     restart: always
     environment:
-      WORDPRESS_DB_HOST: mysqldb:3306
+      WORDPRESS_DB_HOST: mysql:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpresspw
 
