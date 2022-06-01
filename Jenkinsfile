@@ -15,7 +15,7 @@ pipeline {
             }
         }
     }
-    post ('If fail, stopping and removing containers.'){
+    post('If fail, stop and remove containers.'){
         failure {
             sh "docker container stop pipeline-scm-docker-compose-wordpress-1 pipeline-scm-docker-compose-mysqldb-1 || true"
             sh "docker container rm pipeline-scm-docker-compose-wordpress-1 pipeline-scm-docker-compose-mysqldb-1 -f"

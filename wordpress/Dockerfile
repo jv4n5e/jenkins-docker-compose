@@ -1,2 +1,4 @@
 FROM wordpress:latest
-COPY wait-for-it.sh /var/www/html/wait-for-it.sh
+
+WORKDIR /var/www/html
+COPY wait-for-it.sh .wait-for-it.sh
