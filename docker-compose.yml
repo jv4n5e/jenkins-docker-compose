@@ -21,7 +21,8 @@ services:
   wordpress:
     depends_on:
       - mysqldb
-    build: wordpress
+    build: 
+      context: wordpress
     image: wordpress
     ports:
       - 80:80
