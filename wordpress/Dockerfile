@@ -3,5 +3,6 @@ FROM wordpress:latest
 WORKDIR /var/www/html
 COPY wait-for-it.sh .
 
-RUN touch test.txt
+#RUN ls -la
 RUN chmod a+x wait-for-it.sh
+RUN ./wait-for-it.sh
