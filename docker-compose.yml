@@ -27,7 +27,8 @@ services:
     image: wordpress
     ports:
       - 80:80
-    command: pwd; ls-la; ./wait-for-it.sh mysqldb:3306
+    command: ls -la
+    #command: ./wait-for-it.sh mysqldb:3306
     #restart: always
     environment:
       - WORDPRESS_DB_HOST=db
