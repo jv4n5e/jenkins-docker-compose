@@ -23,6 +23,7 @@ services:
       - mysqldb
     build: 
       context: wordpress
+      dockerfile: Dockerfile
     image: wordpress
     ports:
       - 80:80
