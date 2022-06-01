@@ -9,7 +9,7 @@ pipeline {
         stage('Approval to kill'){
             steps {
                 input "Can we stop and remove the running containers?"
-                sh "docker container stop $(docker container ls -q --filter name=pipeline-scm-docker-compose*) || true"
+                sh "docker container stop $(docker container ls -q --filter name=pipeline-scm-docker-compose) || true"
                 sh "docker container rm $(docker container ls -q --filter name=pipeline-scm-docker-compose) -f"
                 //sh "docker network rm nginxnet mysqlnet tomcatnet pythonnet || true"
             }
@@ -17,8 +17,8 @@ pipeline {
     }
     post('If fail, stop and remove containers.'){
         failure {
-            sh "docker container stop $(docker container ls -q --filter name=pipeline-scm-docker-compose*) || true"
-                sh "docker container rm $(docker container ls -q --filter name=pipeline-scm-docker-compose) -f"
+            sh "docker container stop $(docker container ls -a --filter name=pipeline-scm-docker-compose) || true"
+                sh "docker container rm $(docker container ls -a --filter name=pipeline-scm-docker-compose) -f"
             //sh "docker network rm nginxnet mysqlnet tomcatnet pythonnet || true"
         }
     }
