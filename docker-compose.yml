@@ -10,8 +10,8 @@ services: #service is the name for a "Container in production".
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: wordpresspw
-      MYSQL_DATABASE: wordpressdb
-      MYSQL_USER: wordpressuser
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpresspw
 
   wordpress:
@@ -23,7 +23,7 @@ services: #service is the name for a "Container in production".
     restart: always
     environment:
       WORDPRESS_DB_HOST: mysqldb:3306
-      WORDPRESS_DB_USER: wordpressuser
+      WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpresspw
 
 volumes: 
