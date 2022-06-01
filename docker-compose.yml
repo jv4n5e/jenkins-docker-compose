@@ -28,7 +28,7 @@ services:
       - 80:80
     #command: ls -la
     command: timeout 15 bash -c 'until printf "" 2>>/dev/null >>/dev/tcp/$$0/$$1; do sleep 1; done' mysqldb 3306
-    restart: always
+    #restart: always
     environment:
       - WORDPRESS_DB_HOST=mysqldb
       - WORDPRESS_DB_USER=wordpress
