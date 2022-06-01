@@ -1,30 +1,35 @@
 version: '3'
 
-services: #service is the name for a "Container in production".
-  mysql: #container service name
+
+services:
+  mysqldb:
     image: mysql:5.7
     ports:
-      - "3306:3306"
+      - 3306:3306
+    command: '--default-authentication-plugin=mysql_native_password'
     volumes:
       - db_data:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: somewordpress
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
-
+      - MYSQL_ROOT_PASSWORD=somewordpress
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=wordpress
+      - MYSQL_PASSWORD=wordpress
+    expose:
+      - 3306
+      - 33060
   wordpress:
     depends_on:
-      - mysql
+      - mysqldb
     image: wordpress:latest
     ports:
-      - "80:80"
+      - 80:80
+    command: ./wait-for-it.sh mysqldb:3306
     restart: always
     environment:
-      WORDPRESS_DB_HOST: mysql:3306
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: wordpress
-
-volumes: 
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=wordpress
+      - WORDPRESS_DB_PASSWORD=wordpress
+      - WORDPRESS_DB_NAME=wordpress
+volumes:
   db_data:
