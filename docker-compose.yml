@@ -27,8 +27,8 @@ services:
     ports:
       - 80:80
     #command: ls -la
-    command: ./wait-for-it.sh pipeline-scm-docker-compose-mysqldb-1:3306
-    #restart: always
+    #command: ./wait-for-it.sh pipeline-scm-docker-compose-mysqldb-1:3306
+    restart: always
     environment:
       - WORDPRESS_DB_HOST=mysqldb
       - WORDPRESS_DB_USER=wordpress
