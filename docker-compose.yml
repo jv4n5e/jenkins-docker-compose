@@ -25,8 +25,8 @@ services:
     image: wordpress
     ports:
       - 80:80
-    #command: ./wait-for-it.sh mysqldb:3306
-    restart: always
+    command: ./wait-for-it.sh mysqldb:3306
+    #restart: always
     environment:
       - WORDPRESS_DB_HOST=db
       - WORDPRESS_DB_USER=wordpress
