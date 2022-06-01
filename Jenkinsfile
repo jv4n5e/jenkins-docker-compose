@@ -10,7 +10,7 @@ pipeline {
             steps {
                 input "Can we stop and remove the running containers?"
                 sh '''
-                    docker container stop "$(docker container ls -a --filter name=pipeline-scm-docker-compose)" || true'
+                    docker container stop "$(docker container ls -a --filter name=pipeline-scm-docker-compose)" || true
                 '''
                 sh '''
                     docker container rm "$(docker container ls -a --filter name=pipeline-scm-docker-compose)" -f
@@ -22,7 +22,7 @@ pipeline {
     post('If fail, stop and remove containers.'){
         failure {
             sh '''
-                    docker container stop "$(docker container ls -a --filter name=pipeline-scm-docker-compose)" || true'
+                    docker container stop "$(docker container ls -a --filter name=pipeline-scm-docker-compose)" || true
                 '''
             sh '''
                 docker container rm "$(docker container ls -a --filter name=pipeline-scm-docker-compose)" -f
