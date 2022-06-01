@@ -21,7 +21,8 @@ services:
   wordpress:
     depends_on:
       - mysqldb
-    image: wordpress:latest
+    build: wordpress
+    image: wordpress
     ports:
       - 80:80
     command: ./wait-for-it.sh mysqldb:3306
