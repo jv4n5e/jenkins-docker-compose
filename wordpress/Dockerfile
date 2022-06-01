@@ -5,4 +5,3 @@ COPY wait-for-it.sh .
 
 #RUN ls -la
 RUN chmod a+x wait-for-it.sh
-RUN ./wait-for-it.sh
