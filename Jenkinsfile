@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Run mysql from docker-compose file') {
             steps {
-                sh 'docker compose run mysqldb'
+                sh 'docker compose run -d mysqldb'
             }
         }
         stage('Run wordpress from docker-compose file') {
             steps {
-                sh 'docker compose run wordpress'
+                sh 'docker compose run -d wordpress'
             }
         }
         stage('Approval to kill'){
