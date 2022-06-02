@@ -1,9 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage('Run docker-compose file') {
+        stage('Run mysql from docker-compose file') {
             steps {
-                sh 'docker compose up -d'
+                sh 'docker compose run mysqldb'
+            }
+        }
+        stage('Run wordpress from docker-compose file') {
+            steps {
+                sh 'docker compose run wordpress'
             }
         }
         stage('Approval to kill'){
