@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Run wordpress from docker-compose file') {
             steps {
-                sh 'docker compose run -d --name wordpress wordpress'
+                sh 'docker compose run -d --name wordpress --service-ports wordpress'
             }
         }
         stage('Approval to kill'){
