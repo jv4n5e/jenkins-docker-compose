@@ -32,6 +32,8 @@ services:
       - WORDPRESS_DB_USER=wordpress
       - WORDPRESS_DB_PASSWORD=wordpress
       - WORDPRESS_DB_NAME=wordpress
+    stdin_open: true
+    tty: true
     command: ["./wait-for-it.sh"]
 volumes:
   db_data:
