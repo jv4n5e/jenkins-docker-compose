@@ -21,7 +21,7 @@ pipeline {
                 sh '''
                     docker container rm \$(docker container ls -a --filter name=pipeline-scm-docker-compose | awk '(NR>1)' | awk '{print $1}') -f
                 '''*/
-                sh 'docker compose rm'
+                sh 'docker compose rm -f'
             }
         }
     }
@@ -34,7 +34,7 @@ pipeline {
             sh '''
                 docker container rm \$(docker container ls -a --filter name=pipeline-scm-docker-compose | awk '(NR>1)' | awk '{print $1}') -f
             '''*/
-            sh 'docker compose rm'
+            sh 'docker compose rm -f'
         }
     }
 }
