@@ -4,7 +4,7 @@ services:
   mysqldb:
     image: mysql:5.7
     healthcheck:
-      test: printf \"GET / HTTP/1.1\n\n\" > /dev/tcp/localhost/3306
+      test: printf \"GET / HTTP/1.1\\n\\n\" > /dev/tcp/localhost/3306 || exit 1
       timeout: 30s
       interval: 2s
       retries: 15
