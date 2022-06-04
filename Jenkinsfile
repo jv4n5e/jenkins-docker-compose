@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Deploy stack from docker-compose file.') {
             steps {
-                sh 'docker stack deploy -c docker-compose.yml mysql-wordpress'
+                sh 'docker stack deploy -c docker-stack.yml mysql-wordpress'
             }
         }
         stage('Approval to kill'){
