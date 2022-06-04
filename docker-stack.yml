@@ -4,7 +4,7 @@ services:
   mysqldb:
     image: mysql:5.7
     healthcheck:
-      test: [ "CMD", "echo", ">", "/dev/tcp/localhost/3306", "&&", "echo", "\'Port is open\'" ]
+      test: [ "CMD", "echo", "\>", "/dev/tcp/localhost/3306", "\&\&", "echo", "\'Port is open\'" ]
       timeout: 30s
       interval: 2s
       retries: 15
