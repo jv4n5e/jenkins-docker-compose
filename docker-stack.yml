@@ -3,6 +3,11 @@ version: "3"
 services:
   mysqldb:
     image: mysql:5.7
+    healthcheck:
+      test: [ "CMD-SHELL", "echo \"#!/bin/bash\n: </dev/tcp/localhost/3306 || exit 1\" > healthcheck.sh && bash healthcheck.sh" ]
+      timeout: 30s
+      interval: 2s
+      retries: 15
     command: '--default-authentication-plugin=mysql_native_password'
     volumes:
       - db_data:/var/lib/mysql
